@@ -1,0 +1,4 @@
+mvn compile
+mvn tomcat:run
+http://localhost:8080/StrutsExam8832/login.jsp
+Êı¾İ¿âÅäÖÃÔÚdbconfig.properties

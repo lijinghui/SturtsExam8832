@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<package name="customerpackge" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="loginf" class="com.Interceptor.loginInterceptor"></interceptor>
+			<interceptor-stack name="defaultInterceptorss">
+				<interceptor-ref name="loginf"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		 <default-interceptor-ref name="defaultInterceptorss"></default-interceptor-ref> 
+
+		<global-results>
+			<result name="loginfail">/login.jsp</result>
+		</global-results>
+		
+		
+		<action name="loginAction" class="com.action.LoginAction"
+			method="execute">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/WEB-INF/index.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="getCus" class="com.action.GetCusAction" method="getJson">
+		</action>
+
+		<action name="update" class="com.action.UpdateAction" method="update">
+			<result name="success" >/WEB-INF/index.jsp</result>
+		</action>
+
+
+		<action name="add" class="com.action.AddAction" method="add">
+			<result name="success">/WEB-INF/index.jsp</result>
+		</action>
+		
+		<action name="jump" class="com.action.AddAction" method="jump">
+			<result name="success">/WEB-INF/CreadCus.jsp</result>
+		</action>
+
+		<action name="del" class="com.action.DelAction" method="del">
+		</action>
+
+	</package>
+
+</struts>
+
